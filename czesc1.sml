@@ -2,7 +2,7 @@
  * Zadanie domowe 1, czesc 1
  *  structure file
  *)
-structure id297391 :> PART_ONE =
+structure id291397 :> PART_ONE =
 struct
   exception NotImplemented
 
