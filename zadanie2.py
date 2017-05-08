@@ -80,9 +80,35 @@ def to_integer(p):
 def to_boolean(p):
     return p(True)(False)
 
-def to_array(p):
+def to_array_of_int(p):
     array = []
     while not to_boolean(IS_EMPTY(p)):
-        array.append(FIRST(p))
+        array.append(to_integer(FIRST(p)))
         p = REST(p)
     return array
+
+# Simple programs
+SUM_1_TO_N 	= lambda n: FOLD(RANGE(ONE)(n))(ZERO)(ADD)
+FACTORIAL	= lambda n: FOLD(RANGE(ONE)(n))(ONE)(MUL)
+
+THIRTY 		= MUL(FIVE)(SIX)
+MYLIST 		= MAP(RANGE(ONE)(THIRTY)) (lambda n: 
+				IF( IS_ZERO (MOD(n)(THREE)) ) 
+					(POW(n)(TWO))
+				(n)
+			  )
+MYLIST2     = MAP(RANGE(ONE)(THIRTY)) ( lambda n: 
+				ADD(n)(DECREMENT(n))
+			  )
+
+# Examples and tests
+THIRTYTWO	= MUL(EIGHT)(FOUR)
+print("8 * 4 = ", to_integer(THIRTYTWO))
+TWENTYSEVEN = POW(THREE)(THREE)
+print("3 ^ 3 = ", to_integer(TWENTYSEVEN))
+
+print("Sum from 1 to 30 =" , to_integer(SUM_1_TO_N(THIRTY)))
+print("6! =" , to_integer(FACTORIAL(SIX)))
+
+print(to_array_of_int(MYLIST))
+print(to_array_of_int(MYLIST2))
