@@ -97,14 +97,14 @@ MYLIST 		= MAP(RANGE(ONE)(THIRTY)) (lambda n:
 					(POW(n)(TWO))
 				(n)
 			  )
-MYLIST2     = MAP(RANGE(ONE)(THIRTY)) ( lambda n: 
+MYLIST2		= MAP(RANGE(ONE)(THIRTY)) ( lambda n: 
 				ADD(n)(DECREMENT(n))
 			  )
 
 # Examples and tests
 THIRTYTWO	= MUL(EIGHT)(FOUR)
 print("8 * 4 = ", to_integer(THIRTYTWO))
-TWENTYSEVEN = POW(THREE)(THREE)
+TWENTYSEVEN	= POW(THREE)(THREE)
 print("3 ^ 3 = ", to_integer(TWENTYSEVEN))
 
 print("Sum from 1 to 30 =" , to_integer(SUM_1_TO_N(THIRTY)))
