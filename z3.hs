@@ -4,9 +4,9 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
 type A = Integer
-type B = String
+type B = Bool
 type C = Float
-type D = Double
+type D = Char
 
 -- 1. Theorem impl_rozdz : (A -> B) -> (A -> C) -> A -> B -> C.
 t1 :: (A -> B) -> (A -> C) -> A -> B -> C
@@ -65,3 +65,32 @@ t13 :: (A -> B -> C) -> (A, B) -> C
 t13 = \x -> \y -> x (fst y) (snd y)
 
 main = print("Magnificently, all proofs compiled correctly.")
+
+-- Let's try to implement some functions in Haskell style
+-- which takes real functions as arguments (not lambdas)
+
+fun1 :: Integer -> Bool
+fun1 x = if x > 10 then True else False
+
+fun2 :: Integer -> Float
+fun2 n = 0.11111
+
+fun3 :: Bool -> Float
+fun3 true = 3.14159265359
+
+fun4 :: Bool -> Float -> Char
+fun4 x y = if x == True then if y > 3.1415 then 'y' else 'n' else 'n'
+
+p1 :: (Integer -> Bool) -> (Integer -> Float) -> Integer -> Bool -> Float
+p1 x y z w = y z 
+-- p1 fun1 fun2 13 False
+
+p2 :: (Integer -> Bool) -> (Bool -> Float) -> Integer -> Float
+p2 x y z = y (x z)
+-- p2 fun1 fun3 21 
+
+diamencik :: (Integer -> Bool) -> (Integer -> Float) -> (Bool -> Float -> Char) -> Integer -> Char
+diamencik x y z w = z (x w) (y w) 
+-- diamencik fun1 fun2 fun4 153
+
+-- ----------------------------
